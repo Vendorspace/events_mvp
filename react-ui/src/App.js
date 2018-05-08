@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api')
+    fetch('/api/supplierone')
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
@@ -21,7 +21,7 @@ class App extends Component {
       })
       .then(json => {
         this.setState({
-          message: json.message,
+          message: json.name,
           fetching: false
         });
       }).catch(e => {
