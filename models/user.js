@@ -3,8 +3,14 @@ var Schema = mongoose.Schema;
 
 
 var UserSchema = new Schema({
-	bizName: String,
-	owner: String,
+	bizName: {
+		type: String,
+		required: true
+	},
+	owner: {
+		type: String,
+		required: true
+	},
 	userType: {
 		type: String,
 		required: true
@@ -15,8 +21,26 @@ var UserSchema = new Schema({
 		zip: String,
 		state: String
 	},
-	contact_phone: String,
-	contact_email: String
+	contact_phone: {
+		type: String,
+		required: true
+	},
+	contact_email: {
+		type: String,
+		required: true
+	},
+	password: {
+		type: String,
+		required: true
+	},
+	avatar: {
+		type: String,
+		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 module.exports = mongoose.model('User', UserSchema);
