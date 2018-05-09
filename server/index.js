@@ -16,6 +16,7 @@ require('dotenv').config();
 //configure bodyparser, grabs data from body of post
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
+//MAYBE SHOULD BE FALSE?
 app.use(bodyParser.json());
 
 //things added for deployment
