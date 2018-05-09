@@ -9,7 +9,7 @@ var UserSchema = new Schema({
 		type: String,
 		required: true
 
-	}	
+	},	
 	address: {
 		street: String,
 		zip: String,
