@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
-var Supplier = require('../models/supplier');
+var User = require('../models/user');
 //added for deployment:
 const path = require('path');
 
@@ -22,7 +22,7 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 var port = process.env.PORT || 5000;
 
 //connet to DB
-var dbConnection = process.env.MONGODB_URI || 'mongodb://localhost:27017/test_api_chrono';
+var dbConnection = process.env.MONGODB_URI || 'mongodb://localhost:27017/vendorspace';
 mongoose.connect(dbConnection);
 
 var router = express.Router();
@@ -47,41 +47,41 @@ router.get('/', function(req, res) {
   res.json({message: 'Welcome to our API!'});
 });
 
-router.route('/supplier')
+router.route('/user')
   .get(function(req, res) {
-    Supplier.find(function(err, supplier) {
+    User.find(function(err, user) {
       if(err) {
         res.send(err);
       }
-    res.json(supplier);
+    res.json(user);
   });
 });
 
-router.route('/supplierone')
+router.route('/userone')
   .get(function(req, res) {
-    Supplier.findOne(function(err, supplier) {
+    User.findOne(function(err, user) {
       if(err) {
         res.send(err);
       }
-    res.json(supplier);
+    res.json(user);
   });
 });
 
-router.route('/newsupplier')
+router.route('/newuser')
   .post(function(req, res) {
-    var supplier = new Supplier(); //new instance of a vehicle
-    supplier.name = req.body.name;
-    supplier.owner = req.body.owner;
-    supplier.address = req.body.address;
+    var user = new User(); //new instance of a vehicle
+    user.name = req.body.name;
+    user.owner = req.body.owner;
+    user.address = req.body.address;
+user
 
-
-    supplier.save(function(err){
+    user.save(function(err){
       if(err){
         res.send(err);
       }
-      res.json(supplier);
+      res.json(user);
   });
-  console.log('supplier added to db');
+  console.log('user added to db');
 });
     
 
