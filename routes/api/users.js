@@ -17,7 +17,7 @@ router.post('/register', (req, res) => {
 	User.findOne({ contact_email: req.body.contact_email })
 		.then(user => {
 			if(user) {
-				return res.status(400).json({email: "email already exists"});
+				return res.status(400).json({contact_email: "email already exists"});
 			} else {
 			    var user = new User({
 				    bizName: req.body.bizName,
@@ -44,5 +44,29 @@ router.post('/register', (req, res) => {
 	})
 });
 
+//@route GET api/users/login
+// @desc login user / returning jwt 
+// @access public
+router.post('/login', (req, res) => {
+	const contact_email = req.body.contact_email;
+	const password = req.body.password;
+
+	User.findOne({contact_email})
+		.then(user => {
+			if(!user) {
+				return res.status(404).json({contact_email: "User not found"});
+			}
+
+			//check password
+			bcrypt.compare(password, user.password)
+				.then(isMatch => {
+					if(isMatch) {
+						res.json({message: "success"});
+					} else {
+						return res.status(400).json({password: 'Password incorrect'});
+					}
+				})
+		});
+});
 
 module.exports = router;
