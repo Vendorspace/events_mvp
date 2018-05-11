@@ -1,46 +1,43 @@
-
-var express = require('express');
+var express = require("express");
 var app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var cors = require('cors');
-var User = require('../models/user');
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var cors = require("cors");
+var User = require("../models/user");
+var passport = require("passport");
 //added for deployment:
-const path = require('path');
-const users = require('../routes/api/users');
-const profile = require('../routes/api/profile');
-const posts = require('../routes/api/posts');
+const path = require("path");
+const users = require("../routes/api/users");
+const profile = require("../routes/api/profile");
+const posts = require("../routes/api/posts");
 
-require('dotenv').config();
+require("dotenv").config();
 
 //configure bodyparser, grabs data from body of post
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 //MAYBE SHOULD BE FALSE?
 app.use(bodyParser.json());
 
 //things added for deployment
-app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
-
+app.use(express.static(path.resolve(__dirname, "../react-ui/build")));
 
 //set up port for server to listen on
 var port = process.env.PORT || 5000;
 
 //connet to DB
-var dbConnection = process.env.MONGODB_URI || 'mongodb://localhost:27017/vendorspace';
+var dbConnection =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/vendorspace";
 mongoose.connect(dbConnection);
 
-// var router = express.Router();
+app.use(passport.initialize());
 
-// //routes will all be prefixed with /api
-// app.use('/api', router);
-app.get('/', (req, res) => res.send('hello world'));
+//passport config
+require("../config/passport")(passport);
 
-
-app.use('/api/users', users);
-app.use('/api/profile', profile);
-app.use('/api/posts', posts);
-
+app.use("/api/users", users);
+app.use("/api/profile", profile);
+app.use("/api/posts", posts);
 
 // //middleware
 // //middleware is useful for validations, we can log
@@ -94,18 +91,13 @@ app.use('/api/posts', posts);
 //   });
 //   console.log('user added to db');
 // });
-    
-
-
-
 
 // //added for deployment
- app.get("*", (req, res) => {  
-     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
- });
-
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 // //sneaking suspicion this should be changed for deployment
 app.listen(port);
 
-console.log('server listening on port ' + port);
+console.log("server listening on port " + port);
