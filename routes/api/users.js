@@ -8,6 +8,7 @@ const passport = require("passport");
 
 //Load Input Validation
 const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
 
 // @route GET api/users/test
 // @desc tests users route
@@ -60,12 +61,20 @@ router.post("/register", (req, res) => {
 // @desc login user / returning jwt
 // @access public
 router.post("/login", (req, res) => {
+	const { errors, isValid } = validateLoginInput(req.body);
+
+	//check validation
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
+
 	const contact_email = req.body.contact_email;
 	const password = req.body.password;
 
 	User.findOne({ contact_email }).then(user => {
 		if (!user) {
-			return res.status(404).json({ contact_email: "User not found" });
+			errors.contact_email = "User not found";
+			return res.status(404).json(errors);
 		}
 
 		//check password
@@ -86,7 +95,8 @@ router.post("/login", (req, res) => {
 					}
 				);
 			} else {
-				return res.status(400).json({ password: "Password incorrect" });
+				errors.password = "Password incorrect";
+				return res.status(400).json(errors);
 			}
 		});
 	});
