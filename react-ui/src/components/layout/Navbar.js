@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from "../../images/logo-no-tag.png";
+import { Link } from "react-router-dom";
 import "../../CSS/navbar.css";
 
 class Navbar extends Component {
@@ -8,9 +9,9 @@ class Navbar extends Component {
 			<div>
 				<nav className="navbar vs-nav-bar">
 					<div className="container-fluid">
-						<a className="navbar-brand vs-logo-container" href="#">
+						<Link className="navbar-brand vs-logo-container" to="/">
 							<img className="vs-nav-logo" src={logo} />
-						</a>
+						</Link>
 						<ul className="nav navbar-nav navbar-right">
 							<li>
 								<a href="#">How it works</a>
@@ -18,11 +19,11 @@ class Navbar extends Component {
 							<li className="divider-vertical" />
 
 							<li>
-								<a href="#">Sign in</a>
+								<Link to="/login">Sign in</Link>
 							</li>
 
 							<li>
-								<a href="#">Register</a>
+								<Link to="/register">Register</Link>
 							</li>
 						</ul>
 					</div>
