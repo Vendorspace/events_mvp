@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
-
 .footer {
 	background-color: #974578;
 	color: #fff;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 	font-size: 12px;
 	padding: 8px 0;
 	font-family: Montserrat;
