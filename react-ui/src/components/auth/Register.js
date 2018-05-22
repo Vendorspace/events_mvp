@@ -60,6 +60,7 @@ class Register extends Component {
 
 	render() {
 		const { errors } = this.state;
+		console.log(errors);
 
 		return (
 			<div>
@@ -73,6 +74,15 @@ class Register extends Component {
 								<p className="lead text-center">
 									Create your Vendorspace account
 								</p>
+								{Object.keys(errors).length != 0 && (
+									<div
+										className="alert alert-danger"
+										role="alert"
+									>
+										{" "}
+										Please fill in the required fields.
+									</div>
+								)}
 								<form onSubmit={this.onSubmit}>
 									<div className="form-group">
 										<input
@@ -95,7 +105,7 @@ class Register extends Component {
 										)}
 									</div>
 									<div className="form-group">
-										<input
+										<select
 											type="text"
 											className={classnames(
 												"form-control form-control-lg",
@@ -108,7 +118,12 @@ class Register extends Component {
 											name="userType"
 											value={this.state.userType}
 											onChange={this.onChange}
-										/>
+										>
+											<option> </option>
+											<option>Vendor</option>
+											<option>Planner</option>
+											<option>Supplier</option>
+										</select>
 										{errors.userType && (
 											<div className="invalid-feedback">
 												{errors.userType}
