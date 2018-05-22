@@ -1,56 +1,54 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser } from "./actions/authActions";
+import { logoutUser } from "./actions/authActions";
+
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+
+import "./App.css";
+
+//check for token
+if (localStorage.jwtToken) {
+  //set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+
+  //check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    //logout user
+    store.dispatch(logoutUser());
+    //TODO: clear current profile
+    //redirect to login
+    window.location.href = "/login";
+  }
+}
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: null,
-      fetching: true
-    };
-  }
-
-  componentDidMount() {
-    fetch('/api/userone')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(json => {
-        this.setState({
-          message: json.name,
-          fetching: false
-        });
-      }).catch(e => {
-        this.setState({
-          message: `API call failed: ${e}`,
-          fetching: false
-        });
-      })
-  }
-
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
-        </p>
-        <p className="App-intro">
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-        </p>
-      </div>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Route exact path="/" component={Landing} />
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </div>
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }

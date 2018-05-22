@@ -28,3 +28,5 @@ const ProfileSchema = new Schema({
 });
 
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
+
+//planners book vendors and venues

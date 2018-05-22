@@ -1,6 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
 
 var UserSchema = new Schema({
 	bizName: {
@@ -14,8 +13,7 @@ var UserSchema = new Schema({
 	userType: {
 		type: String,
 		required: true
-
-	},	
+	},
 	address: {
 		street: String,
 		zip: String,
@@ -34,8 +32,7 @@ var UserSchema = new Schema({
 		required: true
 	},
 	avatar: {
-		type: String,
-		required: true
+		type: String
 	},
 	date: {
 		type: Date,
@@ -43,4 +40,4 @@ var UserSchema = new Schema({
 	}
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);
