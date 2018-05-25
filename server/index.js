@@ -41,7 +41,7 @@ app.use("/api/posts", posts);
 
 if(process.env.NODE_ENV === 'production') {
   //set static folder
-  app.use(express.static('react_ui/build'));
+  app.use(express.static('client/build'));
   
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
