@@ -1,0 +1,12 @@
+.searchbox {
+    background-color: white;
+    border: solid grey 0.5px;
+    margin: 0px 150px;
+}
+
+#searchbutton {
+    color: white;
+    width: 200px;
+    background-color: darkorange;
+    border-radius: 20px;
+}
