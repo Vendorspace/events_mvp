@@ -39,6 +39,15 @@ app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
 
+if(process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.static('react_ui/build'));
+  
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
+
 // //middleware
 // //middleware is useful for validations, we can log
 // //things from here or stop the request from continuing
@@ -93,9 +102,7 @@ app.use("/api/posts", posts);
 // });
 
 // //added for deployment
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+
 
 // //sneaking suspicion this should be changed for deployment
 app.listen(port);
