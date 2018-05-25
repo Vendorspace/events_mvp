@@ -8,7 +8,7 @@ class Footer extends Component {
 		return (
 			<div>
 				<footer className="footer">
-					<div className="container">
+					<div className="container container-clear-top">
 						<span className="width-50">
 							(C) 2017 Vendorspace llc., All rights reserved
 						</span>

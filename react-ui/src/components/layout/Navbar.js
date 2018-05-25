@@ -54,9 +54,9 @@ class Navbar extends Component {
 		return (
 			<div>
 				<nav className="vs-nav-bar navbar navbar-expand navbar-light bg-light d-flex justify-content-between">
-					<a className="navbar-brand " href="#">
+					<Link className="navbar-brand " to="/">
 						<img className="vs-nav-logo" src={logo} />
-					</a>
+					</Link>
 					{isAuthenticated ? authLinks : guestLinks}
 				</nav>
 			</div>
