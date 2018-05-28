@@ -1,8 +1,8 @@
 import React from "react";
-import classNames from "classnames";
-import propTypes from "prop-types";
+import classnames from "classnames";
+import PropTypes from "prop-types";
 
-const TextFiedlGroup = ({
+const TextFieldGroup = ({
   name,
   placeholder,
   value,
@@ -16,14 +16,14 @@ const TextFiedlGroup = ({
   return (
     <div className="form-group">
       <input
-        type="email"
+        type={type}
         className={classnames("form-control form-control-lg", {
           "is-invalid": error
         })}
         placeholder={placeholder}
         name={name}
         value={value}
-        onChange={this.onChange}
+        onChange={onChange}
         disabled={disabled}
       />
       {info && <small className="form-text text-muted">{info}</small>}
@@ -49,4 +49,4 @@ TextFieldGroup.defaultProps = {
     type: 'text'
 }
 
-export default TextFiedlGroup;
+export default TextFieldGroup;
