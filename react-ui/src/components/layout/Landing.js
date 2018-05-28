@@ -18,7 +18,7 @@ class Landing extends Component {
           <div class="container text-center">
             <h4 class="display-4 ">Your next event starts here.</h4>
             <div className=" mt-5 pb-5 searchbox">
-              <form class="  form-inline justify-content-center">
+              <form class="form-inline justify-content-center">
                 <div class="input-group mt-5 mb-2 mr-sm-2 mb-sm-0">
                   <input
                     type="text"
@@ -26,18 +26,14 @@ class Landing extends Component {
                     id="lookingfor"
                     placeholder="Looking for..."
                   />
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="keyword"
-                    placeholder="Keywords..."
-                  />
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="budget"
-                    placeholder="Budget..."
-                  />
+                  <div class="form-group col-md-4">
+                    <select id="inputState" class="form-control">
+                      <option selected>Business Type</option>
+                      <option>Vendor</option>
+                      <option>Planner</option>
+                      <option>Supplier</option>
+                    </select>
+                  </div>
                 </div>
               </form>
               <div className="mt-5 ">
