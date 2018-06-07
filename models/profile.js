@@ -6,23 +6,29 @@ const ProfileSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "users"
 	},
-	userType: {
-		type: String,
-		required: true
-	},
+	
 	handle: {
 		type: String,
 		required: true,
 		max: 40
 	},
-	company: {
-		type: String,
-		required: true
-	},
+	
 	website: {
 		type: String
 	},
 	location: {
+		type: String
+	},
+	
+	twitter: {
+		type: String
+	},
+	
+	facebook: {
+		type: String
+	},
+	
+	linkedin: {
 		type: String
 	}
 });
