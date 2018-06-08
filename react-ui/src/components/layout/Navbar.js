@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { clearCurrentProfile } from "../../actions/profileActions";
 import "../../CSS/navbar.css";
 
 class Navbar extends Component {
 	onLogoutClick(e) {
 		e.preventDefault();
+		this.props.clearCurrentProfile();
 		this.props.logoutUser();
 	}
 
@@ -17,6 +19,9 @@ class Navbar extends Component {
 
 		const authLinks = (
 			<ul className="navbar-nav">
+			<li className="p-2 ">
+					<Link to="/dashboard">Dashboard</Link>
+				</li>
 				<li className="p-2 ">How it works</li>
 				<div className="p-2 divider-vertical" />
 				<li className="p-2 ">
@@ -73,4 +78,4 @@ const mapStateToProps = state => ({
 	auth: state.auth
 });
 
-export default connect(mapStateToProps, { logoutUser })(Navbar);
+export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(Navbar);

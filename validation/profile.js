@@ -16,12 +16,7 @@ module.exports = function validateProfileInput(data) {
 	if (Validator.isEmpty(data.handle)) {
 		errors.handle = "Profile handle is required";
 	}
-	if (Validator.isEmpty(data.userType)) {
-		errors.userType = "You must enter a user type";
-	}
-	if (Validator.isEmpty(data.company)) {
-		errors.company = "You must enter a company name";
-	}
+	
 	if (!isEmpty(data.website)) {
 		if (!Validator.isURL(data.website)) {
 			errors.website = "Not a valid URL";
