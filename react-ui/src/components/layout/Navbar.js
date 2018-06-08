@@ -19,6 +19,9 @@ class Navbar extends Component {
 
 		const authLinks = (
 			<ul className="navbar-nav">
+			<li className="p-2 ">
+					<Link to="/dashboard">Dashboard</Link>
+				</li>
 				<li className="p-2 ">How it works</li>
 				<div className="p-2 divider-vertical" />
 				<li className="p-2 ">
