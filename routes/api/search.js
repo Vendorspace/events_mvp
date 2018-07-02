@@ -9,13 +9,22 @@ const Post = require("../../models/post");
 //Profile Model
 const Profile = require("../../models/profile");
 
+//User model
+const User = require("../../models/user");
+
 router.get("/test", (req, res) => res.json({ message: "search works" }));
 
+router.get('/usersList/:type', (req, res) => {
+	User.find({ userType: req.params.type }, (err, users) => {
+		res.send(users);
+	});
+});
 
-router.get("/search/:type/:keyword?", (req, res) => {
+
+router.get("/search/:type/", (req, res) => {
 	const errors = {};
 
-	Profile.find({ bizType: req.params.type })
+	User.find({ bizType: req.params.type })
 		.populate({
 			model: "User",
 			path: "user",
