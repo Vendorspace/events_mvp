@@ -14,7 +14,7 @@ const User = require("../../models/user");
 
 router.get("/test", (req, res) => res.json({ message: "search works" }));
 
-router.get('/usersList/:type', (req, res) => {
+router.get('/usersList/:type/', (req, res) => {
 	User.find({ userType: req.params.type }, (err, users) => {
 		res.send(users);
 	});
