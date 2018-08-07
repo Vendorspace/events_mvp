@@ -14,20 +14,20 @@ class Landing extends Component {
     return (
       <div>
         {" "}
-        <div class="jumbotron">
-          <div class="container text-center">
-            <h4 class="display-4 ">Your next event starts here.</h4>
+        <div className="jumbotron">
+          <div className="container text-center">
+            <h4 className="display-4 ">Your next event starts here.</h4>
             <div className=" mt-5 pb-5 searchbox">
-              <form class="form-inline justify-content-center">
-                <div class="input-group mt-5 mb-2 mr-sm-2 mb-sm-0">
+              <form className="form-inline justify-content-center">
+                <div className="input-group mt-5 mb-2 mr-sm-2 mb-sm-0">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="lookingfor"
                     placeholder="Looking for..."
                   />
-                  <div class="form-group col-md-4">
-                    <select id="inputState" class="form-control">
+                  <div className="form-group col-md-4">
+                    <select id="inputState" className="form-control">
                       <option selected>Business Type</option>
                       <option>Vendor</option>
                       <option>Planner</option>
@@ -40,7 +40,7 @@ class Landing extends Component {
                 <button
                   id="searchbutton"
                   type="button"
-                  class=" btn btn-warning p-2 mb-5  btn-primary my-2 my-sm-0"
+                  className=" btn btn-warning p-2 mb-5  btn-primary my-2 my-sm-0"
                 >
                   Search
                 </button>
@@ -48,9 +48,9 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">
               <h2>Heading</h2>
               <p>
                 Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
@@ -59,12 +59,12 @@ class Landing extends Component {
                 magna mollis euismod. Donec sed odio dui.{" "}
               </p>
               <p>
-                <a class="btn btn-secondary" href="#" role="button">
+                <a className="btn btn-secondary" href="#" role="button">
                   View details &raquo;
                 </a>
               </p>
             </div>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <h2>Heading</h2>
               <p>
                 Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
@@ -73,12 +73,12 @@ class Landing extends Component {
                 magna mollis euismod. Donec sed odio dui.{" "}
               </p>
               <p>
-                <a class="btn btn-secondary" href="#" role="button">
+                <a className="btn btn-secondary" href="#" role="button">
                   View details &raquo;
                 </a>
               </p>
             </div>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <h2>Heading</h2>
               <p>
                 Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
@@ -87,7 +87,7 @@ class Landing extends Component {
                 condimentum nibh, ut fermentum massa justo sit amet risus.
               </p>
               <p>
-                <a class="btn btn-secondary" href="#" role="button">
+                <a className="btn btn-secondary" href="#" role="button">
                   View details &raquo;
                 </a>
               </p>
