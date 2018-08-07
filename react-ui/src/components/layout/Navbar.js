@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import logo from "../../images/logo-no-tag.png";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { clearCurrentProfile } from "../../actions/profileActions";
 import "../../CSS/navbar.css";
 
-class Navbar extends Component {
+//added export for testing purposes
+
+export class Navbar extends Component {
 	onLogoutClick(e) {
 		e.preventDefault();
 		this.props.clearCurrentProfile();
@@ -57,6 +59,7 @@ class Navbar extends Component {
 		);
 
 		return (
+
 			<div>
 				<nav className="vs-nav-bar navbar navbar-expand navbar-light bg-light d-flex justify-content-between">
 					<Link className="navbar-brand " to="/">
@@ -65,6 +68,7 @@ class Navbar extends Component {
 					{isAuthenticated ? authLinks : guestLinks}
 				</nav>
 			</div>
+
 		);
 	}
 }
@@ -77,5 +81,7 @@ Navbar.propTypes = {
 const mapStateToProps = state => ({
 	auth: state.auth
 });
+
+
 
 export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(Navbar);
