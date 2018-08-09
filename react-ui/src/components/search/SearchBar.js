@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import "../../CSS/landing.css";
+import { Link } from "react-router-dom";
 
 export default class SearchBar extends Component {
   render() {
@@ -26,13 +27,14 @@ export default class SearchBar extends Component {
           </div>
         </form>
         <div className="mt-5 ">
-          <button
+          <Link
+            to="/searchResult"
             id="searchbutton"
             type="button"
             className=" btn btn-warning p-2 mb-5  btn-primary my-2 my-sm-0"
           >
             Search
-          </button>
+          </Link>
         </div>
       </div>
     );
