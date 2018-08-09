@@ -1,7 +1,8 @@
 import { GET_RESULTS } from "../actions/types";
 
 const initialState = {
-  query: null
+  query: null,
+  userType: null
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +10,8 @@ export default function(state = initialState, action) {
     case GET_RESULTS:
         return {
             ...state,
-            loading: true
+          query: action.payload,
+          userType: action.payload
         }
     default:
       return state;
