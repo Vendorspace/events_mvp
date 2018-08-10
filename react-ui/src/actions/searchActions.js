@@ -5,7 +5,8 @@ import {
 } from "./types";
 
 //get search results
-export const getResults = (userType) => dispatch => {
+export const getResults = (queryData) => dispatch => {
+  var userType = queryData.userType;
   axios
     .get(`/api/search/usersList/${userType}`)
     .then(res =>

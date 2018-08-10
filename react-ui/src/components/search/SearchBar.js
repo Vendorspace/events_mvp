@@ -19,7 +19,7 @@ export class SearchBar extends Component {
   
   onSubmit(e) {
 		e.preventDefault();
-
+    console.log('submit clicked');
 		const queryData = {
       query: this.state.query,
       userType: this.state.userType
@@ -35,7 +35,7 @@ export class SearchBar extends Component {
   render() {
     return (
       <div className=" mt-5 pb-5 searchbox">
-        <form className="form-inline justify-content-center">
+        <form onSubmit={this.onSubmit} className="form-inline justify-content-center">
           <div className="input-group mt-5 mb-2 mr-sm-2 mb-sm-0">
             <input
               value={this.state.query}
@@ -55,17 +55,18 @@ export class SearchBar extends Component {
               </select>
             </div>
           </div>
-        </form>
-        <div className="mt-5 ">
+          <div className="mt-5 ">
           <button
-            onSubmit={this.onSubmit}
+
             id="searchbutton"
-            type="button"
+            type="submit"
             className=" btn btn-warning p-2 mb-5  btn-primary my-2 my-sm-0"
           >
             Search
           </button>
         </div>
+        </form>
+        
       </div>
     );
   }
