@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import { PropTypes } from "prop-types";
+import PropTypes  from "prop-types";
 import { connect } from "react-redux";
+import { getResults } from "../../actions/searchActions";
+
 
 
 export class SearchResult extends Component {
   
-  
+ 
   
   
   render() {
+    const { user } = this.props.auth;
+
     return (
       <div>
-        {this.props.search.results}
+        <h1>and the results are...</h1>
+        {this.props.search.toString()}
       </div>
     )
   }

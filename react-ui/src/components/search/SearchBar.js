@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import "../../CSS/landing.css";
 import { Link } from "react-router-dom";
 import { getResults } from "../../actions/searchActions";
+import { withRouter } from "react-router-dom";
 
 export class SearchBar extends Component {
   constructor() {
@@ -25,7 +26,8 @@ export class SearchBar extends Component {
       userType: this.state.userType
 		};
 
-		this.props.getResults(queryData);
+    this.props.getResults(queryData);
+    this.props.history.push("/searchResult");
   }
   
   onChange(e) {
@@ -75,13 +77,11 @@ export class SearchBar extends Component {
 
 SearchBar.propTypes = {
   getResults: PropTypes.func.isRequired,
-  query: PropTypes.object.isRequired,
-  userType: PropTypes.object.isRequired
+  
 };
 
 const mapStateToProps = state => ({
-	query: state.query,
-	userType: state.userType
+	search: state.search
 });
 
-export default connect(mapStateToProps, { getResults })(SearchBar);
+export default connect(mapStateToProps, { getResults })(withRouter(SearchBar));
