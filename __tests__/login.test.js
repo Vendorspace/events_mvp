@@ -1,8 +1,8 @@
 import React from 'react';
-import { configure } from 'enzyme';
-import { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
+
+import { shallow } from 'enzyme-jest';
+
+
 import { Login } from './react-ui/src/components/auth/Login';
 
 describe ('<Login />', () => {
