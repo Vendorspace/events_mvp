@@ -6,7 +6,7 @@ import {
 
 //get search results
 export const getResults = (queryData) => dispatch => {
-  var userType = queryData.userType;
+  var userType = queryData;
   axios
     .get(`/api/search/usersList/${userType}`)
     .then(res =>

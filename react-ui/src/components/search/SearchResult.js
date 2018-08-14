@@ -6,17 +6,32 @@ import { getResults } from "../../actions/searchActions";
 
 
 export class SearchResult extends Component {
-  
+  constructor() {
+    super();
+    this.state = {
+      answer: ''
+    };
+
+    
+  }
  
-  
+  componentWillMount(){
+    
+    console.log('will mount');
+    console.log(this.props.search)
+  }
   
   render() {
-    const { user } = this.props.auth;
+
+    
+
+
+    
 
     return (
       <div>
         <h1>and the results are...</h1>
-        {this.props.search.toString()}
+        
       </div>
     )
   }
@@ -25,7 +40,7 @@ export class SearchResult extends Component {
 SearchResult.propTypes = {
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-  search: PropTypes.object.isRequired
+  getResults: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -35,4 +50,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps)(SearchResult);
+export default connect(mapStateToProps, { getResults })(SearchResult);
